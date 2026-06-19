@@ -4,7 +4,7 @@ An automated repository intelligence platform that seamlessly integrates into yo
 
 Save hundreds of hours while keeping management, cross-functional teams, and clients perfectly in the loop.
 
-👉 **[View the Live Landing Page & Join the Waitlist](https://YOUR_GITHUB_USERNAME.github.io/diffdocs-waitlist/)**
+👉 **[View the Live Landing Page & Join the Waitlist](https://Sankarsh369.github.io/diffdocs-waitlist/)**
 
 ---
 
