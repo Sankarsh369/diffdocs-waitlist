@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiffDocs | AI-Powered Git Diff Automation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <div class="logo-icon">D</div>
+            <span class="logo-text">DiffDocs</span>
+        </div>
+        <div>
+            <span class="badge">v1.0 Beta Coming Soon</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+        
+        <h1 class="hero-title">
+            Turn your <span class="gradient-text">Git Diffs</span> into flawless documentation.
+        </h1>
+        <p class="hero-subtitle">
+            A zero-config GitHub Action that automatically writes detailed pull request descriptions and markdown changelogs every time you push code.
+        </p>
+
+        <div class="form-card">
+            <!-- Form Input State -->
+            <div id="form-container">
+                <form id="waitlist-form" class="waitlist-form">
+                    <label for="email-input" class="form-label">
+                        Stop writing PR descriptions manually.
+                    </label>
+                    <div class="form-group">
+                        <input 
+                            type="email" 
+                            name="email" 
+                            id="email-input"
+                            placeholder="Enter your developer or work email" 
+                            required 
+                            class="input-email"
+                        />
+                        <button type="submit" class="btn-submit">
+                            Join DiffDocs Private Beta
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Success State Message (Hidden by default) -->
+            <div id="success-message" style="display: none; text-align: center;">
+                <h3 class="success-title">🎉 You're on the list!</h3>
+                <p class="success-text">We'll ping you the second the private beta drops.</p>
+            </div>
+        </div>
+
+        <div class="mockup-grid">
+            <div class="mockup-card">
+                <div class="mockup-header">
+                    <span class="dot dot-red"></span>
+                    <span class="mockup-title">git diff main...feature-branch</span>
+                </div>
+                <div class="code-wrapper">
+                    <code class="code-line meta-line">@@ -14,4 +14,8 @@</code>
+                    <code class="code-line deletion-line">- fetch('/api/data')</code>
+                    <code class="code-line addition-line">+ const response = await fetch('/api/v2/metrics');</code>
+                    <code class="code-line addition-line">+ if (!response.ok) throw new Error('API_ERR');</code>
+                    <code class="code-line addition-line">+ const data = await response.json();</code>
+                    <code class="code-line addition-line">+ cache.set('metrics', data, 300);</code>
+                </div>
+            </div>
+
+            <div class="mockup-card highlight-card">
+                <div class="mockup-header split-header">
+                    <div class="mockup-header-left">
+                        <span class="dot dot-green"></span>
+                        <span class="mockup-title">DiffDocs AI Output</span>
+                    </div>
+                    <span class="output-type">Generated Markdown</span>
+                </div>
+                <div class="output-wrapper">
+                    <h3 class="output-heading">### 🚀 Features Introduced</h3>
+                    <ul class="output-list">
+                        <li>Upgraded metrics system to internal v2 API endpoint.</li>
+                        <li>Added rigorous HTTP status error handling mechanism.</li>
+                        <li>Implemented a 5-minute memory caching layer mechanism.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div>&copy; 2026 DiffDocs. All rights reserved.</div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+    </footer>
+
+    <!-- Asynchronous Submission Handling script -->
+    <script>
+        document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const emailInput = document.getElementById('email-input').value;
+            const formContainer = document.getElementById('form-container');
+            const successMessage = document.getElementById('success-message');
+            
+            const formData = new FormData();
+            formData.append('email', emailInput);
+            
+            try {
+                await fetch('https://app.loops.so/api/v1/webforms/submit/cmqko4eo40kkp0jztoq3kihmw', {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                });
+                
+                // Hide form layout, show success block smoothly
+                formContainer.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+            } catch (error) {
+                console.error('Submission failed:', error);
+                // Fallback approach if user blocking rules interrupt fetch
+                e.target.action = 'https://app.loops.so/api/v1/webforms/submit/cmqko4eo40kkp0jztoq3kihmw';
+                e.target.method = 'POST';
+                e.target.submit();
+            }
+        });
+    </script>
+
+</body>
+</html>
